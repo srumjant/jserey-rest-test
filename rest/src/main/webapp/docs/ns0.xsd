@@ -1,0 +1,69 @@
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="contract" type="contract"/>
+  <xs:element name="customer" type="customer"/>
+  <xs:element name="customerAddress" type="customerAddress"/>
+  <xs:element name="error" type="errorObject"/>
+  <xs:complexType name="baseEntity" abstract="true">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contract">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="contractNumber" type="xs:long" minOccurs="0"/>
+          <xs:element name="name" type="xs:string" minOccurs="0"/>
+          <xs:element name="description" type="xs:string" minOccurs="0"/>
+          <xs:element name="validFrom" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="validTo" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="parentConractId" type="xs:long" minOccurs="0"/>
+          <xs:element name="conditions" type="xs:string" minOccurs="0"/>
+          <xs:element name="note" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="customer">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+          <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+          <xs:element name="identityCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="note" type="xs:string" minOccurs="0"/>
+          <xs:element name="birthDate" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="created" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="updated" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="customerAddress">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:long" minOccurs="1"/>
+          <xs:element name="house" type="xs:string" minOccurs="0"/>
+          <xs:element name="address" type="xs:string" minOccurs="0"/>
+          <xs:element name="county" type="xs:string" minOccurs="0"/>
+          <xs:element name="parish" type="xs:string" minOccurs="0"/>
+          <xs:element name="townCounty" type="xs:string" minOccurs="0"/>
+          <xs:element name="mobile" type="xs:string" minOccurs="0"/>
+          <xs:element name="phone" type="xs:string" minOccurs="0"/>
+          <xs:element name="sms" type="xs:string" minOccurs="0"/>
+          <xs:element name="email" type="xs:string" minOccurs="0"/>
+          <xs:element name="note" type="xs:string" minOccurs="0"/>
+          <xs:element name="country" type="xs:string" minOccurs="0"/>
+          <xs:element name="created" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="updated" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="errorObject">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
